@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUGX Gaming</title>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<style>
+  :root{
+    --navy-dark:#050b1f;
+    --navy:#0a1442;
+    --navy-light:#101c5c;
+    --red:#e8536b;
+    --white:#ffffff;
+    --gray-bg:#f2f2f4;
+    --text-muted:#c9cee0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Arial,sans-serif;}
+  body{background:var(--gray-bg);}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+
+  /* ===== NAVBAR ===== */
+  .navbar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 60px;
+  }
+  .logo{display:flex;align-items:center;gap:8px;color:var(--white);font-weight:700;font-size:22px;}
+  .logo i{font-size:26px;}
+  .nav-links{display:flex;gap:35px;align-items:center;color:var(--white);}
+  .nav-links a{font-size:15px;display:flex;align-items:center;gap:6px;opacity:.9;transition:.3s;}
+  .nav-links a:hover{opacity:1;color:var(--red);}
+  .signin{
+    background:var(--red);color:var(--white)!important;padding:8px 22px;border-radius:20px;
+  }
+
+  /* ===== HERO (SECTION 1 - DARK NAVY) ===== */
+  .hero{
+    background:linear-gradient(160deg,var(--navy-dark),var(--navy));
+    min-height:100vh;
+    padding-bottom:60px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-content{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:60px 60px 0 60px;flex-wrap:wrap;gap:40px;
+  }
+  .hero-text{max-width:480px;color:var(--white);}
+  .hero-text .eyebrow{display:flex;align-items:center;gap:8px;color:var(--text-muted);font-size:15px;margin-bottom:10px;}
+  .hero-text h1{font-size:42px;font-weight:800;margin-bottom:18px;line-height:1.2;}
+  .hero-text p{color:var(--text-muted);font-size:15px;line-height:1.7;margin-bottom:25px;}
+  .search-box{display:flex;max-width:340px;background:var(--white);border-radius:25px;overflow:hidden;}
+  .search-box input{border:none;outline:none;padding:12px 18px;flex:1;font-size:14px;}
+  .search-box button{
+    border:none;background:var(--red);color:var(--white);padding:0 22px;
+    display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600;
+    transition:background .3s;
+  }
+  .search-box button:hover{background:#c9405a;}
+
+  .hero-img{
+    width:400px;max-width:100%;border-radius:16px;overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+  .hero-img img{width:100%;display:block;}
+
+  .start-wrap{padding:50px 60px 0;display:flex;justify-content:center;}
+  .start-btn{
+    background:var(--red);color:var(--white);border:none;padding:16px 50px;
+    border-radius:30px;font-size:17px;font-weight:700;cursor:pointer;
+    display:flex;align-items:center;gap:10px;transition:background .35s ease, transform .2s ease;
+    box-shadow:0 10px 25px rgba(232,83,107,.35);
+  }
+  .start-btn i{font-size:22px;transition:transform .4s ease;}
+  .start-btn:hover{transform:translateY(-3px);}
+  .start-btn.pressed{background:var(--navy-light);box-shadow:0 10px 25px rgba(10,20,66,.5);}
+  .start-btn.pressed i{transform:translateY(4px);}
+
+  /* ===== SECTION 2 - WHITE / TRENDING ===== */
+  .section{padding:70px 60px;}
+  .section-white{background:var(--white);}
+  .section-gray{background:var(--gray-bg);}
+  .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;}
+  .eyebrow-label{color:var(--red);font-weight:700;font-size:13px;letter-spacing:1px;display:flex;align-items:center;gap:6px;margin-bottom:6px;}
+  .section-header h2{font-size:28px;font-weight:800;color:#111;}
+  .view-all{
+    background:var(--red);color:var(--white);padding:10px 26px;border-radius:20px;
+    font-weight:700;font-size:14px;display:flex;align-items:center;gap:6px;border:none;cursor:pointer;
+    transition:background .3s;
+  }
+  .view-all:hover{background:#c9405a;}
+
+  .card-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+  }
+  .game-card{
+    background:var(--gray-bg);border-radius:10px;overflow:hidden;
+    transition:transform .3s;
+  }
+  .game-card:hover{transform:translateY(-6px);}
+  .game-card img{width:100%;height:170px;object-fit:cover;display:block;}
+  .card-body{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;}
+  .card-body .cat{color:#999;font-size:12px;display:block;margin-bottom:4px;}
+  .card-body .title{font-weight:700;font-size:15px;color:#222;}
+  .card-body .cart-icon{
+    color:var(--navy);font-size:20px;cursor:pointer;background:none;border:none;
+    display:flex;align-items:center;justify-content:center;
+    padding:6px;border-radius:50%;transition:background .25s, color .25s, transform .15s;
+  }
+  .card-body .cart-icon:hover{background:var(--navy);color:var(--white);}
+  .card-body .cart-icon:active{transform:scale(.9);}
+
+  /* ===== SECTION 3 - MOST PLAYED ===== */
+  .card-grid-6{
+    display:grid;grid-template-columns:repeat(6,1fr);gap:18px;
+  }
+  .card-grid-6 .game-card img{height:140px;}
+
+  @media(max-width:900px){
+    .navbar,.hero-content,.section{padding-left:20px;padding-right:20px;}
+    .nav-links{display:none;}
+    .card-grid{grid-template-columns:repeat(2,1fr);}
+    .card-grid-6{grid-template-columns:repeat(3,1fr);}
+  }
+
+  /* ===== ADD-TO-CART BOTTOM SHEET ===== */
+  .overlay{
+    position:fixed;inset:0;background:rgba(5,11,31,.55);
+    display:none;align-items:flex-end;justify-content:center;
+    z-index:999;
+  }
+  .overlay.show{display:flex;}
+  .sheet{
+    background:var(--white);
+    width:100%;max-width:460px;
+    border-radius:26px 26px 0 0;
+    padding:26px 26px 34px;
+    position:relative;
+    transform:translateY(100%);
+    transition:transform .35s ease;
+  }
+  .overlay.show .sheet{transform:translateY(0);}
+  .sheet-close{
+    position:absolute;top:18px;left:20px;
+    background:none;border:none;font-size:22px;color:#999;cursor:pointer;
+  }
+  .sheet-msg{
+    text-align:center;color:#2e9e5b;font-weight:700;font-size:17px;
+    margin:6px 0 22px;display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .sheet-item{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    border:1px solid #eee;border-radius:14px;padding:14px;margin-bottom:22px;
+  }
+  .sheet-item-info{flex:1;}
+  .sheet-item-info .title{font-weight:700;font-size:15px;color:#222;margin-bottom:4px;display:block;}
+  .sheet-item-info .price-row{display:flex;align-items:center;gap:14px;margin-top:10px;}
+  .sheet-item-info .price{font-weight:700;color:#222;font-size:14px;display:flex;align-items:center;gap:4px;}
+  .qty-control{display:flex;align-items:center;gap:10px;}
+  .qty-control button{
+    width:26px;height:26px;border-radius:50%;border:1px solid #ccc;background:var(--white);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;color:#333;font-size:14px;
+    transition:background .2s;
+  }
+  .qty-control button.plus{background:var(--navy);color:var(--white);border-color:var(--navy);}
+  .qty-control span{font-weight:700;min-width:14px;text-align:center;}
+  .sheet-item-thumb{
+    width:100px;height:64px;border-radius:10px;overflow:hidden;flex-shrink:0;
+    background:var(--navy);
+  }
+  .sheet-item-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  .sheet-actions{display:flex;gap:12px;}
+  .sheet-actions button{
+    flex:1;padding:14px 0;border-radius:24px;border:none;font-weight:700;font-size:14px;cursor:pointer;
+    transition:filter .2s, transform .15s;
+  }
+  .sheet-actions button:active{transform:scale(.97);}
+  .btn-view-cart{background:#d9dcf2;color:var(--navy);}
+  .btn-view-cart:hover{filter:brightness(.95);}
+  .btn-pay-now{
+    background:var(--red);color:var(--white);
+    display:flex;align-items:center;justify-content:center;gap:6px;
+  }
+  .btn-pay-now:hover{filter:brightness(.92);}
+
+  .sheet-footer{
+    text-align:center;margin-top:22px;
+  }
+  .sheet-footer span{
+    background:var(--gray-bg);color:#555;font-size:12px;padding:8px 18px;border-radius:16px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SECTION 1 : HERO (DARK NAVY) ============ -->
+<section class="hero" id="section1">
+  <nav class="navbar">
+    <div class="logo"><i class='bx bxs-x-circle'></i> LUGX</div>
+    <div class="nav-links">
+      <a href="#section1"><i class='bx bx-home'></i> Home</a>
+      <a href="#section2"><i class='bx bx-store'></i> Our shop</a>
+      <a href="#section3"><i class='bx bx-envelope'></i> Contact</a>
+      <a href="#"><i class='bx bx-info-circle'></i> About</a>
+      <a href="#" class="signin"><i class='bx bx-log-in'></i> Sign in</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="eyebrow"><i class='bx bx-joystick'></i> Welcome To Lugx!</div>
+      <h1>Best Gaming Site ever!</h1>
+      <p>LUGX Gaming is free Bootstrap 5 HTML CSS website template for your gaming websites. You can download and use this layout for commercial purposes. Please tell your friends about TemplateMo.</p>
+      <div class="search-box">
+        <input type="text" placeholder="Start typing...">
+        <button><i class='bx bx-search'></i> SEARCH</button>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://i.imgur.com/6WZ2u9j.jpeg" onerror="this.src='https://placehold.co/400x520/0a1442/ffffff?text=Assassin%27s+Creed'" alt="Assassin's Creed character">
+    </div>
+  </div>
+
+  <div class="start-wrap">
+    <button class="start-btn" id="startBtn" onclick="pressStart()">
+      <i class='bx bx-play-circle'></i> START
+    </button>
+  </div>
+</section>
+
+<!-- ============ SECTION 2 : TRENDING GAMES (WHITE) ============ -->
+<section class="section section-white" id="section2">
+  <div class="section-header">
+    <div>
+      <div class="eyebrow-label"><i class='bx bx-trending-up'></i> TRENDING</div>
+      <h2>Trending Games</h2>
+    </div>
+    <button class="view-all" onclick="location.href='#section3'"><i class='bx bx-right-arrow-alt'></i> VIEW ALL</button>
+  </div>
+
+  <div class="card-grid">
+    <div class="game-card">
+      <img src="https://placehold.co/300x220/1c2b52/ffffff?text=Assassin+Creed" alt="Assassin Creed">
+      <div class="card-body">
+        <div><span class="cat">Action</span><span class="title">Assasin Creed</span></div>
+        <button class="cart-icon" onclick="addToCart('Assasin Creed','Action',59,'https://placehold.co/300x220/1c2b52/ffffff?text=Assassin+Creed')"><i class='bx bx-cart-alt'></i></button>
+      </div>
+    </div>
+    <div class="game-card">
+      <img src="https://placehold.co/300x220/2b1c52/ffffff?text=Assassin+Creed" alt="Assassin Creed">
+      <div class="card-body">
+        <div><span class="cat">Action</span><span class="title">Assasin Creed</span></div>
+        <button class="cart-icon" onclick="addToCart('Assasin Creed','Action',59,'https://placehold.co/300x220/2b1c52/ffffff?text=Assassin+Creed')"><i class='bx bx-cart-alt'></i></button>
+      </div>
+    </div>
+    <div class="game-card">
+      <img src="https://placehold.co/300x220/521c3f/ffffff?text=Assassin+Creed" alt="Assassin Creed">
+      <div class="card-body">
+        <div><span class="cat">Action</span><span class="title">Assasin Creed</span></div>
+        <button class="cart-icon" onclick="addToCart('Assasin Creed','Action',59,'https://placehold.co/300x220/521c3f/ffffff?text=Assassin+Creed')"><i class='bx bx-cart-alt'></i></button>
+      </div>
+    </div>
+    <div class="game-card">
+      <img src="https://placehold.co/300x220/1c5245/ffffff?text=Assassin+Creed" alt="Assassin Creed">
+      <div class="card-body">
+        <div><span class="cat">Action</span><span class="title">Assasin Creed</span></div>
+        <button class="cart-icon" onclick="addToCart('Assasin Creed','Action',59,'https://placehold.co/300x220/1c5245/ffffff?text=Assassin+Creed')"><i class='bx bx-cart-alt'></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 : MOST PLAYED (GRAY) ============ -->
+<section class="section section-gray" id="section3">
+  <div class="section-header">
+    <div>
+      <div class="eyebrow-label"><i class='bx bx-star'></i> TOP GAMES</div>
+      <h2>Most Played</h2>
+    </div>
+    <button class="view-all"><i class='bx bx-right-arrow-alt'></i> VIEW ALL</button>
+  </div>
+
+  <div class="card-grid-6">
+    <div class="game-card">
+      <img src="https://placehold.co/200x150/1c2b52/ffffff?text=Warframe" alt="Warframe">
+      <div class="card-body">
+        <div><span class="cat">Adventure</span><span class="title">Warframe</span></div>
+        <button class="cart-icon" onclick="addToCart('Warframe','Adventure',45,'https://placehold.co/200x150/1c2b52/ffffff?text=Warframe')"><i class='bx bx-cart-alt'></i></button>
+      </div>
+    </div>
+    <div class="game-card">
+      <img src="https://placehold.co/200x150/2b1c52/ffffff?text=PUBG" alt="PUBG">
+      <div class="card-body">
+        <div><span class="cat">Adventure</span><span class="title">Battlegrounds</span></div>
+        <button class="cart-icon" onclick="addToCart('Battlegrounds','Adventure',49,'https://placehold.co/200x150/2b1c52/ffffff?text=PUBG')"><i class='bx bx-cart-alt'></i></button>
+      </div>
+    </div>
+    <div class="game-card">
+      <img src="https://placehold.co/200x150/521c3f/ffffff?text=Apex" alt="Apex">
+      <div class="card-body">
+        <div><span class="cat">Adventure</span><span class="title">Apex Legends</span></div>
+        <button class="cart-icon" onclick="addToCart('Apex Legends','Adventure',39,'https://placehold.co/200x150/521c3f/ffffff?text=Apex')"><i class='bx bx-cart-alt'></i></button>
+      </div>
+    </div>
+    <div class="game-card">
+      <img src="https://placehold.co/200x150/1c5245/ffffff?text=Sims+4" alt="Sims 4">
+      <div class="card-body">
+        <div><span class="cat">Adventure</span><span class="title">The Sims 4</span></div>
+        <button class="cart-icon" onclick="addToCart('The Sims 4','Adventure',55,'https://placehold.co/200x150/1c5245/ffffff?text=Sims+4')"><i class='bx bx-cart-alt'></i></button>
+      </div>
+    </div>
+    <div class="game-card">
+      <img src="https://placehold.co/200x150/523f1c/ffffff?text=Lost+Ark" alt="Lost Ark">
+      <div class="card-body">
+        <div><span class="cat">Adventure</span><span class="title">Lost Ark</span></div>
+        <button class="cart-icon" onclick="addToCart('Lost Ark','Adventure',35,'https://placehold.co/200x150/523f1c/ffffff?text=Lost+Ark')"><i class='bx bx-cart-alt'></i></button>
+      </div>
+    </div>
+    <div class="game-card">
+      <img src="https://placehold.co/200x150/3f1c52/ffffff?text=Destiny+2" alt="Destiny 2">
+      <div class="card-body">
+        <div><span class="cat">Adventure</span><span class="title">Destiny 2</span></div>
+        <button class="cart-icon" onclick="addToCart('Destiny 2','Adventure',42,'https://placehold.co/200x150/3f1c52/ffffff?text=Destiny+2')"><i class='bx bx-cart-alt'></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADD TO CART BOTTOM SHEET ============ -->
+<div class="overlay" id="cartOverlay" onclick="closeSheetOnOverlay(event)">
+  <div class="sheet">
+    <button class="sheet-close" onclick="closeSheet()"><i class='bx bx-x'></i></button>
+    <div class="sheet-msg"><i class='bx bxs-badge-check'></i> تمت إضافة المنتج إلى السلة بنجاح</div>
+
+    <div class="sheet-item">
+      <div class="sheet-item-info">
+        <span class="title" id="sheetTitle">Assasin Creed</span>
+        <div class="price-row">
+          <span class="price"><i class='bx bx-purchase-tag-alt'></i> <span id="sheetPrice">59</span> ريال</span>
+          <div class="qty-control">
+            <button class="plus" onclick="changeQty(1)"><i class='bx bx-plus'></i></button>
+            <span id="sheetQty">1</span>
+            <button onclick="changeQty(-1)"><i class='bx bx-minus'></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="sheet-item-thumb"><img id="sheetImg" src="" alt=""></div>
+    </div>
+
+    <div class="sheet-actions">
+      <button class="btn-view-cart" onclick="location.href='#section2'">عرض السلة</button>
+      <button class="btn-pay-now"><i class='bx bx-purchase-tag-alt'></i> ادفع الآن <span id="sheetTotal">59</span></button>
+    </div>
+
+    <div class="sheet-footer"><span>LUGX Gaming</span></div>
+  </div>
+</div>
+
+<script>
+function pressStart(){
+  const btn = document.getElementById('startBtn');
+  btn.classList.add('pressed');
+  setTimeout(()=>{
+    document.getElementById('section2').scrollIntoView({behavior:'smooth'});
+  }, 250);
+}
+
+let currentQty = 1;
+let currentPrice = 0;
+
+function addToCart(name, cat, price, img){
+  currentQty = 1;
+  currentPrice = price;
+  document.getElementById('sheetTitle').textContent = name;
+  document.getElementById('sheetPrice').textContent = price;
+  document.getElementById('sheetImg').src = img;
+  document.getElementById('sheetQty').textContent = currentQty;
+  document.getElementById('sheetTotal').textContent = price * currentQty;
+  document.getElementById('cartOverlay').classList.add('show');
+}
+
+function changeQty(delta){
+  currentQty = Math.max(1, currentQty + delta);
+  document.getElementById('sheetQty').textContent = currentQty;
+  document.getElementById('sheetTotal').textContent = currentPrice * currentQty;
+}
+
+function closeSheet(){
+  document.getElementById('cartOverlay').classList.remove('show');
+}
+function closeSheetOnOverlay(e){
+  if(e.target.id === 'cartOverlay') closeSheet();
+}
+</script>
+
+</body>
+</html>

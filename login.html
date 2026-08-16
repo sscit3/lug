@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login / Register</title>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<style>
+  :root{
+    --navy:#0d1b2e;
+    --gray-bg:#ececec;
+    --text-muted:#8a8a8a;
+    --border:#dcdcdc;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins','Segoe UI',Tahoma,Arial,sans-serif;}
+  body{
+    min-height:100vh;
+    background:var(--gray-bg);
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .card{
+    width:340px;
+    background:#ffffff;
+    border-radius:22px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    padding-bottom:35px;
+    position:relative;
+  }
+
+  .tab{
+    background:var(--navy);
+    color:#fff;
+    width:150px;
+    padding:14px 0;
+    text-align:center;
+    border-radius:16px;
+    font-size:20px;
+    font-weight:700;
+    margin:0 auto;
+    position:relative;
+    top:0;
+    transform:translateY(-24px);
+  }
+
+  .form-body{
+    padding:0 32px;
+    margin-top:6px;
+  }
+
+  .field{
+    position:relative;
+    margin-bottom:18px;
+  }
+  .field input{
+    width:100%;
+    padding:14px 42px 14px 18px;
+    border:1px solid var(--border);
+    border-radius:24px;
+    outline:none;
+    font-size:14px;
+    color:#333;
+  }
+  .field input::placeholder{color:var(--text-muted);}
+  .field input:focus{border-color:var(--navy);}
+  .field i{
+    position:absolute;
+    right:16px;top:50%;
+    transform:translateY(-50%);
+    color:#666;
+    font-size:19px;
+  }
+
+  .row-between{
+    display:flex;justify-content:flex-end;
+    margin-bottom:18px;
+  }
+  .row-between a{
+    font-size:13px;color:#333;text-decoration:none;
+  }
+  .row-between a:hover{text-decoration:underline;}
+
+  .terms{
+    display:flex;align-items:center;gap:8px;
+    margin-bottom:20px;
+  }
+  .terms input{accent-color:var(--navy);width:15px;height:15px;cursor:pointer;}
+  .terms label{font-size:13px;color:#333;}
+
+  .btn-main{
+    width:100%;
+    background:var(--navy);
+    color:#fff;
+    border:none;
+    padding:14px 0;
+    border-radius:24px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    transition:background .3s, transform .15s;
+    margin-bottom:20px;
+  }
+  .btn-main i{font-size:18px;}
+  .btn-main:hover{background:#152847;}
+  .btn-main:active{transform:scale(.98);}
+
+  .switch-text{
+    text-align:center;
+    font-size:13px;
+    color:#333;
+  }
+  .switch-text b{
+    cursor:pointer;
+    font-weight:700;
+  }
+  .switch-text b:hover{text-decoration:underline;}
+
+  .hidden{display:none;}
+
+  /* subtle fade transition */
+  .form-body{animation:fadeIn .35s ease;}
+  @keyframes fadeIn{
+    from{opacity:0;transform:translateY(6px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- ===== LOGIN FORM ===== -->
+  <div id="loginForm">
+    <div class="tab">Login</div>
+    <div class="form-body">
+      <div class="field">
+        <input type="text" placeholder="Username">
+        <i class='bx bx-user'></i>
+      </div>
+      <div class="field">
+        <input type="password" placeholder="Password">
+        <i class='bx bx-lock-alt'></i>
+      </div>
+      <div class="row-between">
+        <a href="#">Forgot password?</a>
+      </div>
+      <button class="btn-main">
+        Sign In <i class='bx bx-log-in'></i>
+      </button>
+      <div class="switch-text">
+        Don't have an account? <b onclick="showRegister()">Register</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== REGISTER FORM ===== -->
+  <div id="registerForm" class="hidden">
+    <div class="tab">Register</div>
+    <div class="form-body">
+      <div class="field">
+        <input type="text" placeholder="Username">
+        <i class='bx bx-user'></i>
+      </div>
+      <div class="field">
+        <input type="email" placeholder="Email">
+        <i class='bx bx-envelope'></i>
+      </div>
+      <div class="field">
+        <input type="password" placeholder="Password">
+        <i class='bx bx-lock-alt'></i>
+      </div>
+      <div class="terms">
+        <input type="checkbox" id="agree" checked>
+        <label for="agree">I agree to the terms & condition</label>
+      </div>
+      <button class="btn-main">
+        Sign Up <i class='bx bx-user-plus'></i>
+      </button>
+      <div class="switch-text">
+        Already have an account? <b onclick="showLogin()">Login</b>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showRegister(){
+  document.getElementById('loginForm').classList.add('hidden');
+  document.getElementById('registerForm').classList.remove('hidden');
+}
+function showLogin(){
+  document.getElementById('registerForm').classList.add('hidden');
+  document.getElementById('loginForm').classList.remove('hidden');
+}
+</script>
+
+</body>
+</html>
